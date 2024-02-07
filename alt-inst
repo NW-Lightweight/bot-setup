@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+#This is for installing catbots when you already have the navs cuz I forgot the real fix for the permission denied error lol alzheimer moment
 set -e
 
 if [ $EUID == 0 ]; then
@@ -100,22 +102,6 @@ fi
 
 sudo sed -i 's/^restricted-network yes/# restricted-network yes/g' /etc/firejail/firejail.config
 
-if [ -d ~/.steam/steam/steamapps/common/Team\ Fortress\ 2/tf/maps/ ]; then
-    if [ -d ./rosnebot-database ]; then
-        echo "Fetching navmeshes..."
-        pushd rosnebot-database
-        git fetch --depth 1
-        git reset --hard origin/master
-        popd
-    else
-        git clone --depth 1 https://github.com/Alchemistwithpotion/potionbot-database catbot-database
-    fi
-
-    echo "Copying navmeshes..."
-    sudo rsync catbot-database/nav\ meshes/*.nav ~/.steam/steam/steamapps/common/Team\ Fortress\ 2/tf/maps/
-    sudo chmod 755 ~/.steam/steam/steamapps/common/Team\ Fortress\ 2/tf/maps/*.nav # fixup permissions so tf2 is happy
-    echo "Done copying navmeshes."
-fi
 
 echo
 echo "The web panel can be started with ./start"
