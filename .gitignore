@@ -1,0 +1,17 @@
+cathook-location
+rosnehook-ipc-server
+rosnehook-ipc-web-panel
+account-generator
+rosnebot-database
+rosnehook
+just-disable-vac
+inject.log
+core
+forever/node_modules
+build
+build-debug
+kisak
+users
+steams
+package-lock\.json
+user_instances
